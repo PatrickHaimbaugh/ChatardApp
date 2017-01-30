@@ -7,8 +7,10 @@ namespace ChatardApp.Models
     {
         public int Id { get; set; }
 
-        [Required]
         public ApplicationUser Coach { get; set; }
+
+        [Required]
+        public string CoachId { get; set; }
 
         public DateTime DateTime { get; set; }
 
@@ -16,7 +18,9 @@ namespace ChatardApp.Models
         [StringLength(255)]
         public string Venue { get; set; }
 
-        [Required]
         public Event Event { get; set; }
+
+        [Required]
+        public byte EventId { get; set; }
     }
 }

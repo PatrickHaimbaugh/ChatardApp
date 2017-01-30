@@ -1,5 +1,6 @@
 ﻿using ChatardApp.Models;
 using ChatardApp.ViewModels;
+using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -14,7 +15,8 @@ namespace ChatardApp.Controllers
             {
                 _context = new ApplicationDbContext();
             }
-
+            
+            [Authorize]
             public ActionResult Create()
             {
                 var viewModel = new MeetingFormViewModel
@@ -23,5 +25,23 @@ namespace ChatardApp.Controllers
                 };
                 return View(viewModel);
             }
+            
+        [Authorize]
+        [HttpPost]
+        public ActionResult Create(MeetingFormViewModel viewModel)
+        {
+            var meeting = new Meeting
+            {
+                CoachId = User.Identity.GetUserId(),
+                DateTime = viewModel.DateTime,
+                EventId = viewModel.Event,
+                Venue = viewModel.Venue
+            };
+            _context.Meetings.Add(meeting);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
         }
+
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using ChatardApp.Models;
+using System;
 using System.Collections.Generic;
 
 namespace ChatardApp.ViewModels
@@ -8,7 +9,14 @@ namespace ChatardApp.ViewModels
         public string Venue { get; set; }
         public string Date { get; set; }
         public string Time { get; set; }
-        public int Event { get; set; }
+        public byte Event { get; set; }
         public IEnumerable<Event> Events { get; set; }
+        public DateTime DateTime
+        {
+            get
+            {
+                return DateTime.Parse(string.Format("{0} {1}", Date, Time));
+            }
+        }
     }
 }
