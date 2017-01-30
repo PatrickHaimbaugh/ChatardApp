@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201701261950526_CreateMeetingTable.Designer.cs">
       <DependentUpon>201701261950526_CreateMeetingTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701301535029_PopulateEventsTable.cs" />
+    <Compile Include="Migrations\201701301535029_PopulateEventsTable.Designer.cs">
+      <DependentUpon>201701301535029_PopulateEventsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -295,6 +299,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201701261950526_CreateMeetingTable.resx">
       <DependentUpon>201701261950526_CreateMeetingTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701301535029_PopulateEventsTable.resx">
+      <DependentUpon>201701301535029_PopulateEventsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
