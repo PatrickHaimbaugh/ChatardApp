@@ -28,12 +28,18 @@ namespace ChatardApp.Controllers
             
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(MeetingFormViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                viewModel.Events = _context.Events.ToList();
+                return View("Create", viewModel);
+            }
             var meeting = new Meeting
             {
                 CoachId = User.Identity.GetUserId(),
-                DateTime = viewModel.DateTime,
+                DateTime = viewModel.GetDateTime(),
                 EventId = viewModel.Event,
                 Venue = viewModel.Venue
             };
