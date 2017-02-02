@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace ChatardApp.Controllers
 {
-    public class MeetingController : Controller
+    public class MeetingsController : Controller
     {
 
             private readonly ApplicationDbContext _context;
 
-            public MeetingController()
+            public MeetingsController()
             {
                 _context = new ApplicationDbContext();
             }
