@@ -1,6 +1,7 @@
 ﻿using ChatardApp.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ChatardApp.ViewModels
@@ -19,6 +20,7 @@ namespace ChatardApp.ViewModels
         public string Time { get; set; }
 
         [Required]
+        [DisplayName("Event Type")]
         public byte Event { get; set; }
 
         public IEnumerable<Event> Events { get; set; }

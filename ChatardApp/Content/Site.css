@@ -30,8 +30,8 @@ span.field-validation-error{
 
 /* Bootstrap Overrides */
 .navbar-inverse {
-    background-color: #ff4342;
-    border-color: #ff4342;
+    background-color: #005dab;
+    border-color: #005dab;
 }
 .navbar-inverse .navbar-nav > li > a {
     color: #fff;
@@ -53,6 +53,11 @@ span.field-validation-error{
 .navbar-brand{
     font-weight: 700;
 }
+.img-responsive{
+    max-width: 20px;
+
+}
+
 body {
     font-size: 17px;
 }
@@ -79,8 +84,12 @@ h6,
     padding: 20px 15px;
     border-radius: 9px;
 }
+.form-control-drop{
+    border-radius: 9px;
+    font-size: 17px;
+}
 .form-control:focus{
-    border-color: #2196f3;
+    border-color: black;
     box-shadow: none;
     -webkit-box-shadow: none;
 }
@@ -102,7 +111,7 @@ h6,
 }
 
 .meetings > li .date{
-    background: red;
+    background: #005dab;
     color: white;
     text-align: center;
     width: 60px;

@@ -4,7 +4,7 @@ namespace ChatardApp.Models
 {
     public class Event
     {
-        public byte Id { get; set; }
+        public byte? Id { get; set; }
 
         [Required]
         [StringLength(255)]
