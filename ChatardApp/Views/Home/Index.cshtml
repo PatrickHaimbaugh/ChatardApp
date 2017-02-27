@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 <ul class="meetings">
     @foreach (var meeting in Model)
     {
@@ -21,10 +23,32 @@
                 </span>
                 <span class="event">
                     @meeting.Event.Name
-                    at
-                    @meeting.Venue
+                    @*at
+                    @meeting.Venue*@
                 </span>
+                    <button data-meeting-id="@meeting.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance">Going?</button>
             </div>
         </li>
     }
 </ul>
+
+@section scripts
+{
+<script>
+    $(document).ready(function () {
+        $(".js-toggle-attendance").click(function (e) {
+            var button = $(e.target);
+            $.post("/api/attendances", { meetingId: button.attr("data-meeting-id") })
+            .done(function () {
+                button
+                    .removeClass("btn-default")
+                    .addClass("btn-info")
+                    .text("Going");
+            })
+            .fail(function () {
+                alert("You are already going to this event")
+            })
+        });
+    });
+</script>
+}

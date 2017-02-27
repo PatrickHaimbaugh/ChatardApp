@@ -19,7 +19,8 @@ namespace ChatardApp.Controllers
             var upcomingMeetings = _context.Meetings
                 .Include(m => m.Coach)
                 .Include(m => m.Event)
-                .Where(g => g.DateTime > DateTime.Now);
+                .Where(g => g.DateTime > DateTime.Now)
+                .OrderBy(m => m.DateTime);
 
             return View(upcomingMeetings);
         }

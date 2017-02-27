@@ -94,8 +94,6 @@ h6,
     -webkit-box-shadow: none;
 }
 .btn{
-    font-size: 17px;
-    padding: 7px 20px;
     border-radius: 9px;
 }
 
@@ -136,6 +134,7 @@ h6,
     position: absolute;
     top: 0px;
     left: 70px;
+    width: 200px;
 }
 
 .meetings > li .details .coach {
