@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ChatardApp.Models.Meeting>
+﻿@model ChatardApp.ViewModels.MeetingsViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <ul class="meetings">
-    @foreach (var meeting in Model)
+    @foreach (var meeting in Model.UpcomingMeetings)
     {
         <li>
             <div class="date">
@@ -20,13 +20,21 @@
             <div class="details">
                 <span class="coach">
                     @meeting.Coach.Name
+                    
+                    @if (Model.ShowActions)
+                    {
+                        <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@meeting.CoachId">Follow</button>
+
+                    }
                 </span>
                 <span class="event">
                     @meeting.Event.Name
-                    @*at
-                    @meeting.Venue*@
                 </span>
+                @if (Model.ShowActions)
+                {
                     <button data-meeting-id="@meeting.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance">Going?</button>
+
+                }
             </div>
         </li>
     }
@@ -49,6 +57,17 @@
                 alert("You are already going to this event")
             })
         });
+        $(".js-toggle-follow").click(function (e) {
+            var button = $(e.target);
+            $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                .done(function () {
+                    button.text("Following");
+                })
+                .fail(function () {
+                    alert("You are already following this team");
+                });
+        });
+        
     });
 </script>
 }

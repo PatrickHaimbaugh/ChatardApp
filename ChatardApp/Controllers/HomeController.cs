@@ -1,4 +1,5 @@
 ﻿using ChatardApp.Models;
+using ChatardApp.ViewModels;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace ChatardApp.Controllers
         {
             _context = new ApplicationDbContext();
         }
+
+        
         public ActionResult Index()
         {
             var upcomingMeetings = _context.Meetings
@@ -22,7 +25,13 @@ namespace ChatardApp.Controllers
                 .Where(g => g.DateTime > DateTime.Now)
                 .OrderBy(m => m.DateTime);
 
-            return View(upcomingMeetings);
+            var viewModel = new MeetingsViewModel
+            {
+                UpcomingMeetings = upcomingMeetings,
+                ShowActions = User.Identity.IsAuthenticated
+
+            };
+            return View(viewModel);
         }
 
         public ActionResult About()
@@ -39,4 +48,6 @@ namespace ChatardApp.Controllers
             return View();
         }
     }
+
+
 }

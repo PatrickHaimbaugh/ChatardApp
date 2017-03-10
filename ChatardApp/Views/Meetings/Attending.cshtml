@@ -1,0 +1,42 @@
+﻿@model ChatardApp.ViewModels.MeetingsViewModel
+@{
+    ViewBag.Title = "Attending";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Attending</h2>
+
+<ul class="meetings">
+    @foreach (var meeting in Model.UpcomingMeetings)
+    {
+        <li>
+            <div class="date">
+                <div class="month">
+                    @meeting.DateTime.ToString("MMM")
+                </div>
+                <div class="day">
+                    @meeting.DateTime.ToString("d ")
+                </div>
+            </div>
+            <div class="details">
+                <span class="coach">
+                    @meeting.Coach.Name
+
+                    @if (Model.ShowActions)
+                    {
+                        <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@meeting.CoachId">Follow</button>
+
+                    }
+                </span>
+                <span class="event">
+                    @meeting.Event.Name
+                </span>
+                @if (Model.ShowActions)
+                {
+                    <button data-meeting-id="@meeting.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance">Going?</button>
+
+                }
+            </div>
+        </li>
+    }
+</ul>
