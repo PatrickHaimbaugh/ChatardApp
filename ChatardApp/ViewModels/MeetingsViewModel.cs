@@ -5,6 +5,7 @@ namespace ChatardApp.ViewModels
 {
     public class MeetingsViewModel
     {
+        public IEnumerable<Meeting> TeamsFollowing { get; set; }
         public IEnumerable<Meeting> UpcomingMeetings { get; set; }
         public bool ShowActions { get; set; }
     }

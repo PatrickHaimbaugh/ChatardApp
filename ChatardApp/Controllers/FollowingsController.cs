@@ -23,6 +23,9 @@ namespace ChatardApp.Controllers
             if (_context.Followings.Any(f => f.FollowerId == userId && f.FolloweeId == dto.FolloweeId))
                 return BadRequest("Following Already Exists");
 
+            if (userId == dto.FolloweeId)
+                return BadRequest("You Can Not Follow Yourself");
+
             var following = new Following
             {
                 FollowerId = userId,

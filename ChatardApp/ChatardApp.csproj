@@ -321,6 +321,7 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Meetings\Create.cshtml" />
     <Content Include="Views\Meetings\Attending.cshtml" />
+    <Content Include="Views\Meetings\Following.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
